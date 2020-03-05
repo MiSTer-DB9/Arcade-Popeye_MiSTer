@@ -153,9 +153,10 @@ reg   [7:0] mouse_flags;
 wire [21:0] gamma_bus;
 
 wire [15:0] joy1 = |status[31:30] ? {
-	joydb9md_1[8] | (joydb9md_1[7] & joydb9md_1[4]),// Coin -> 7 *  Mode or Start + B
-	joydb9md_1[11],// _start_2	-> 6 * Z (dummy)
-	joydb9md_1[7], // _start_1	-> 5 * Start
+	joydb9md_1[8] | (joydb9md_1[7] & joydb9md_1[4]),// Coin -> 8 *  Mode or Start + B
+	joydb9md_1[11],// _start_2	-> 7 * Z (dummy)
+	joydb9md_1[7], // _start_1	-> 6 * Start
+	joydb9md_1[4], // btn_fireB	-> 5 * B
 	joydb9md_1[6], // btn_fireA	-> 4 * A
 	joydb9md_1[3], // btn_up	-> 3 * U
 	joydb9md_1[2], // btn_down	-> 2 * D
@@ -165,9 +166,10 @@ wire [15:0] joy1 = |status[31:30] ? {
 	: joy1_USB;
 
 wire [15:0] joy2 =  status[31]    ? {
-	joydb9md_2[8] | (joydb9md_2[7] & joydb9md_2[4]),// Coin -> 7 *  Mode or Start + B
-	joydb9md_2[7], // _start_2	-> 6 * Start
-	joydb9md_2[11],// _start_1	-> 5 (dummy)
+	joydb9md_2[8] | (joydb9md_2[7] & joydb9md_2[4]),// Coin -> 8 *  Mode or Start + B
+	joydb9md_2[7], // _start_2	-> 7 * Start
+	joydb9md_2[11],// _start_1	-> 6 (dummy)
+	joydb9md_2[4], // btn_fireB	-> 5 * B
 	joydb9md_2[6], // btn_fireA	-> 4 * A
 	joydb9md_2[3], // btn_up	-> 3 * U
 	joydb9md_2[2], // btn_down	-> 2 * D
